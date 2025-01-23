@@ -1,0 +1,229 @@
+.background {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    min-height: 1000px;
+    display: flex;
+    flex-direction: column;
+    background-image: url('讯息bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.welcomeback {
+    position: absolute;
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 5vw;
+}
+
+.welcomebox1 {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#yunding {
+    box-shadow: 0.5vw 0.5vw 0.8vw rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    height: 7.7vh;
+    width: 7.7vh;
+    padding: 1px;
+}
+
+h1 {
+    flex: 1;
+    font-size: 2vw;
+    font-weight: 500;
+    padding: 1.3vw;
+}
+
+#me {
+    justify-self: end;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    margin-right: 1vw;
+}
+
+.headline {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    margin-left: 8vw;
+    margin-top: 11vw;
+    width: 80%;
+    height: 8vh;
+    align-items: center;
+}
+
+/* 对每个li元素进行样式设置 */
+.headline li {
+    font-size: 2vw;
+    /* 使用vw单位来设置字体大小，使其随视口宽度缩放，你可以根据实际需要调整这个数值 */
+    color: black;
+    /* 设置字体颜色为黑色 */
+}
+
+/* 对li元素内的a链接元素进行样式设置，确保文字颜色等也符合要求 */
+.headline li a {
+    color: inherit;
+    /* 继承父元素（li元素）的颜色，也就是黑色 */
+    text-decoration: none;
+    /* 去除链接默认的下划线样式，可根据需求选择是否保留 */
+}
+
+.title {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    height: 7vh;
+    align-items: center;
+    margin-left: 5vw;
+    margin-top: 20%;
+}
+
+.partbox {
+    position: absolute;
+    display: flex;
+    width: 92%;
+    height: 23vw;
+    margin-left: 5vw;
+    margin-top: 26%;
+    margin-right: 2vw;
+    margin-bottom: 5%;
+}
+
+.butbar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 8%;
+    height: 4%;
+    margin-left: 1vw;
+    margin-top: 0;
+}
+
+#read {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    align-items: center;
+}
+
+#unread {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    align-items: center;
+}
+
+button {
+    border: 1px solid white;
+    height: 5.5vh;
+    background-color: rgb(188, 253, 253);
+    border-radius: 5px;
+    position: relative;
+}
+
+#read::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-left-color: rgb(218, 255, 255);
+    border-width: 1vw 1vw;
+    border-style: solid;
+    left: 100%;
+    top: 20%;
+}
+
+button:active {
+    background-color: rgb(218, 255, 255);
+}
+
+h2 {
+    font-size: 1vw;
+    margin: 0;
+}
+
+.towrite {
+    position: absolute;
+    display: flex;
+    width: 5%;
+    margin-left: 84vw;
+    margin-top: 23%;
+    height: 2vw;
+    background-color: rgb(188, 253, 253);
+    border-radius: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.readcontent {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 83%;
+    height: 100%;
+    margin-left: 10%;
+    overflow-y: auto;
+    /* 垂直方向自动滚动条 */
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-shrink: 0;
+    height: 30%;
+    /* 让每个元素在主轴方向上按比例分配空间，可根据需求调整 */
+    background-image: linear-gradient(to right, rgb(190, 249, 254), rgb(255, 255, 255));
+    background-repeat: no - repeat;
+    margin: 5px;
+    /* 元素间距 */
+    border-radius: 15px;
+}
+
+.item img {
+    border-radius: 50%;
+    height: 4.7vh;
+    width: 4.7vh;
+    padding: 1px;
+}
+
+h4 {
+    font-size: 1.3vw;
+    font-weight: 300;
+}
+
+h5 {
+    font-size: 1.3vw;
+    font-weight: 900;
+}
+
+h6 {
+    font-size: 1.2vw;
+    font-weight: 500;
+    padding: 0.3vw;
+    justify-items: center;
+}
+
+.content {
+    height: 38%;
+    width: 80%;
+}

@@ -1,0 +1,117 @@
+body {
+    display: block;
+    margin: 8px;
+}
+
+.background {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-image: url('讯息bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.welcomeback {
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 5vw;
+}
+
+.welcomebox1 {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#yunding {
+    box-shadow: 0.5vw 0.5vw 0.8vw rgba(0, 0, 0, 1);
+    border-radius: 50%;
+    height: 7.7vh;
+    width: 7.7vh;
+    padding: 1px;
+}
+
+h1 {
+    flex: 1;
+    font-size: 2vw;
+    font-weight: 500;
+    padding: 1.3vw;
+}
+
+#me {
+    justify-self: end;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    margin-right: 1vw;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    margin-left: 8vw;
+    margin-top: 1vw;
+    width: 80%;
+    height: 8vh;
+    align-items: center;
+}
+
+/* 对每个li元素进行样式设置 */
+.headline li {
+    font-size: 2vw;
+    /* 使用vw单位来设置字体大小，使其随视口宽度缩放，你可以根据实际需要调整这个数值 */
+    color: black;
+    /* 设置字体颜色为黑色 */
+}
+
+/* 对li元素内的a链接元素进行样式设置，确保文字颜色等也符合要求 */
+.headline li a {
+    color: inherit;
+    /* 继承父元素（li元素）的颜色，也就是黑色 */
+    text-decoration: none;
+    /* 去除链接默认的下划线样式，可根据需求选择是否保留 */
+}
+
+.title {
+    display: flex;
+    width: 90%;
+    height: 7vh;
+    align-items: center;
+    margin-left: 5vw;
+    margin-top: 3%;
+}
+
+.butbar {
+    display: flex;
+    flex-direction: column;
+    width: 8%;
+    margin-left: 5vw;
+}
+
+button {
+    border: 1px solid white;
+    height: 5.5vh;
+    background-color: rgb(188, 253, 253);
+    border-radius: 5px;
+}
+
+button:active {
+    background-color: rgb(219, 254, 254);
+}
+
+h2 {
+    font-size: 1vw;
+}
