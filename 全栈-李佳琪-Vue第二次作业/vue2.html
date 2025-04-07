@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍管理系统</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80vw;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: rgb(156, 156, 156);
+        }
+
+        .selected {
+            background-color: orange;
+        }
+
+        button {
+            margin: 0 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>
+            总价：￥{{ totalPrice }}
+            当前选中书籍: {{ currentSelected.name || '无' }}
+        </h2>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>书名</th>
+                <th>价格</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </tr>
+            <template v-for="(book, index) in books" :key="book.id">
+                <tr @click="handleSelect(book)" :class="{ selected: currentSelected.id === book.id }">
+                    <td>{{ index + 1 }}</td>
+                    <td v-if="!book.isEditing">《{{ book.name }}》</td>
+                    <td v-else><input v-model="book.name" type="text"></td>
+                    <td v-if="!book.isEditing">￥{{ book.price }}</td>
+                    <td v-else><input v-model="book.price" type="number"></td>
+                    <td>
+                        <button @click="decrement(book)">-</button>
+                        {{ book.quantity }}
+                        <button @click="increment(book)">+</button>
+                    </td>
+                    <td>
+                        <button @click="handleRemove(book.id)" :disabled="book.isEditing">移除</button>
+                    </td>
+                </tr>
+            </template>
+        </table>
+        <button v-if="!isAdding" @click="startAdding">添加</button>
+        <div v-else>
+            <button @click="confirmAdd">确定</button>
+            <button @click="cancelAdd">取消</button>
+        </div>
+    </div>
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data() {
+                return {
+                    books: [
+                        { id: 1, name: '《JavaScript高级程序设计》', price: 126, quantity: 1, isEditing: false },
+                        { id: 2, name: '《你不知道的 JS（上卷）》', price: 78, quantity: 1, isEditing: false },
+                        { id: 3, name: '《你不知道的 JS（中卷）》', price: 76, quantity: 1, isEditing: false },
+                        { id: 4, name: '《你不知道的 JS（下卷）》', price: 64, quantity: 1, isEditing: false }
+                    ],
+                    currentSelected: {},
+                    nextId: 5,
+                    isAdding: false,
+                    newBook: {
+                        id: null,
+                        name: '',
+                        price: 0,
+                        quantity: 1,
+                        isEditing: true
+                    }
+                };
+            },
+            computed: {
+                totalPrice() {
+                    return this.books.reduce((sum, book) => sum + book.price * book.quantity, 0);
+                }
+            },
+            methods: {
+                decrement(book) {
+                    if (book.quantity > 0) {
+                        book.quantity--;
+                    }
+                },
+                increment(book) {
+                    book.quantity++;
+                },
+                handleRemove(bookId) {
+                    this.books = this.books.filter(book => book.id !== bookId);
+                },
+                handleSelect(book) {
+                    this.currentSelected = book;
+                },
+                startAdding() {
+                    this.isAdding = true;
+                    this.newBook.id = this.nextId++;
+                    this.books.push(this.newBook);
+                },
+                confirmAdd() {
+                    if (!this.newBook.name) {
+                        alert('书名不能为空');
+                        return;
+                    }
+                    const price = Number(this.newBook.price);
+                    if (isNaN(price) || price <= 0) {
+                        alert('价格应为正数');
+                        return;
+                    }
+                    this.newBook.isEditing = false;
+                    this.isAdding = false;
+                    this.newBook = {
+                        id: null,
+                        name: '',
+                        price: 0,
+                        quantity: 1,
+                        isEditing: true
+                    };
+                },
+                cancelAdd() {
+                    this.books.pop();
+                    this.isAdding = false;
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
