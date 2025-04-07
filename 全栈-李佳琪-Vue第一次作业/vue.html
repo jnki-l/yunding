@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .warning {
+            color: red;
+            margin: 10px 0;
+        }
+
+        .red-text {
+            color: red;
+        }
+        .hollow-list {
+            list-style-type: circle;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="inputWord" placeholder="请输入单词">
+        <div>您要输入的单词是：{{ inputWord }}</div>
+
+        <button @click="addWord">确定</button>
+        <button @click="deleteWord">删除</button>
+
+        <div v-if="showWarning" class="warning">鳖加辣！单词数量太多了</div>
+        <ul class="hollow-list">
+            <div :class="{ 'red-text': showWarning }">单词列表：</div>
+            <li 
+            v-for="(word, index) in wordList" 
+            :key="index" 
+            :class="{ 'red-text': showWarning }">
+                {{ word }}
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                inputWord: '',
+                wordList: []
+            },
+            computed: {
+                showWarning() {
+                    return this.wordList.length > 5;
+                }
+            },
+            methods: {
+                addWord() {
+                    const word = this.inputWord.trim();
+                    if (word) {
+                        this.wordList.push(word);
+                        this.inputWord = '';
+                    }
+                },
+                deleteWord() {
+                    this.wordList.pop();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
